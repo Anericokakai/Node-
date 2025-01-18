@@ -1,3 +1,5 @@
+import { HttpStatusCodes } from "./constants.js";
+
 class BaseError extends Error {
   constructor(name, httpCode, description, isOperational) {
     super(description);
@@ -10,8 +12,16 @@ class BaseError extends Error {
   }
 }
 
+//  You can extend the Base Error
 
-// Practice about the error 
+class HTTP404Error extends BaseError{
+    constructor(description="Not Found"){
+        super("NOT FOUND",HttpStatusCodes.NOT_FOUND,"The Url does not exist",true)
+    }
+}
+
+
+// Practice about the error  Object
 class TestError extends Error{
     constructor (description){
         super(description)
